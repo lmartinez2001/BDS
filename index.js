@@ -144,7 +144,7 @@ app.get('/download', (req, res) => {
 async function retrieveConnectionURL(res) {
     //const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
     const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
-      //console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
+      console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
       
       const client = new issuer.Client({
           client_id: 'sporticus',
