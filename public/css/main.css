@@ -1,0 +1,185 @@
+html {
+    font-family: 'louis_george_caferegular';
+}
+
+body {
+    margin: 0;
+    background-color: #fef8e3;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.home_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list_photo {
+    padding: 50px;
+}
+
+
+/* Photos du trombinoscope */
+.trombi_img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.trombi_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trombi {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    width: auto;
+}
+
+.photo_frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    flex: wrap;
+}
+
+@media(min-width: 600px) {
+    .trombi {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width: 900px) {
+    .trombi {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* Mise en page programme de liste */
+
+.program_wrapper {
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.french-program {
+    text-align: justify;
+    text-indent: 3em;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    border: 10px solid #fcd517;
+    border-radius: 10px;
+
+    padding: 2em;
+    padding-top: 0px;
+}
+
+.english-program {
+    text-align: justify;
+    text-indent: 3em;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+    border: 10px solid #fcd517;
+    border-radius: 10px;
+
+    padding: 2em;
+    padding-top: 0px;
+}
+
+.program_title {
+    text-align: center;
+}
+
+
+@media(max-width: 900px) {
+    .program_wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+/* Profil */
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.profile-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    height: 300px;
+    border: 10px solid #fcd517;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.download-link {
+    text-decoration: none;
+    color: #5e941a;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.download-link:hover {
+    color:#fcd517;
+}
+
+
+input[type=submit] {
+    background-color: #5e941a;
+    color: cornsilk;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border:0;
+    margin:5px;
+    transition: 0.2s;
+}
+
+input[type=submit]:hover {
+    color: #fcd517;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #5e941a;
+    color: cornsilk;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border:0;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.custom-file-upload:hover {
+    color: #fcd517;
+}
+

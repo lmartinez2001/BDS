@@ -1,0 +1,70 @@
+<!--
+<nav class="nav">
+    
+
+        <div class="nav_title">
+            <a href='/' class="nav_logo_link"><img class="nav_logo" src="/photos/logo.png"></a>
+            <h1 class="nav_name">Homo Sporticus</h1>
+        </div>
+        
+        <ul class="nav_list">
+            <div class="nav_menu">
+
+                <li class="nav_item"><a class="nav_link" href="/sports">Sports</a></li>
+                <li class="nav_item"><a class="nav_link" href="/programme">Programme</a></li>
+                <li class="nav_item"><a class="nav_link" href="#">Events</a></li>
+                <li class="nav_item"><i class="fa fa-bars hamburger"> </i></li>
+
+            </div>
+            
+        </ul>
+
+    
+    
+</nav>-->
+
+<div class="nav_container">
+
+<nav class="navbar">
+    
+    <div class="nav-logo-container">
+        <a href='/' class="nav_logo_link"><img class="nav-logo-img" src="/photos/logo.png"></a>
+        <a href="/" class="nav-logo">Homo Sporticus</a>
+    </div>
+    
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="/programme" class="nav-link">Programme</a>
+        </li>
+        <li class="nav-item">
+            <a href="/events" class="nav-link">Events</a>
+        </li>
+        <li class="nav-item">
+            <a href="/sports" class="nav-link">Sports</a>
+        </li>
+        <li class="nav-item">
+            <a href="/connection" class="nav-link" id="connect-btn">Connexion</a>
+        </li>
+    </ul>
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>
+
+</div>
+
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    }   
+
+</script>

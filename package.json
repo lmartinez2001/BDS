@@ -1,0 +1,30 @@
+{
+  "name": "site_bds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Omega7569/BDS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omega7569/BDS/issues"
+  },
+  "homepage": "https://github.com/Omega7569/BDS#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.3.1",
+    "fs": "^0.0.1-security",
+    "md5": "^2.3.0",
+    "openid-client": "^5.1.6",
+    "opn": "^6.0.0"
+  }
+}

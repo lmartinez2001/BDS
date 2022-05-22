@@ -1,0 +1,27 @@
+<div class="profile-wrapper">
+
+    <h1>Profil</h1>
+
+    <div class="profile-upload-wrapper">
+        <h3>Certificat médical</h3>
+        <form method="post" action="/profile" enctype="multipart/form-data">
+            
+            <label class="custom-file-upload">
+                <input type="file" id="file-input" name="file">
+                Choisir
+            </label>
+            <input type="submit" value="Téléverser">
+            <!--<button id="upload-btn">Téléverser</button>-->
+        </form>
+
+        <a href="/download" class="download-link">Télécharger le certificat</a>
+        
+        <h4 id="certif-status">a</h4>
+
+        <p id="certif-description" style="text-align: justify; margin: 10px;"></p>
+
+    </div>
+
+
+</div>
+

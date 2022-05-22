@@ -1,0 +1,32 @@
+<div class="home_container">
+
+    <div class="list_photo">
+
+        <img src="/photos/fresque.png" alt="Photo de liste">
+
+    </div>
+
+    <div class="trombi_wrapper">
+
+        <h1>Liste</h1>
+
+        <div class="trombi">
+            
+            <!-- Chargement des images du trombinoscope -->
+            <% imagess.forEach((image) => { %>
+                
+                <div class="photo_frame">
+
+                    <img class="trombi_img" src="<%= image.url %> " alt="image" style="margin-top: <%= image.offset|0 %>px">
+                    <h3 class="image_name" style="margin-top: <%= image.offset3|0 %>px"><%= image.name %></h3>
+                    <p class="image_respo" style="margin-top: <%= image.offset2|0 %>px" ><%= image.desc %></p>
+                </div>
+                
+                
+            <% }) %> 
+
+        </div>
+
+    </div>
+
+</div>

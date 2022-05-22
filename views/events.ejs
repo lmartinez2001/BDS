@@ -1,0 +1,37 @@
+<div class="home_container">
+
+    <div class="list_photo">
+
+        <img src="/photos/events/istockphoto-949190756-612x612.jpg" alt="Photo non contractuelle">
+
+    </div>
+
+    <div class="events_wrapper">
+
+        <h1>Les événements</h1>
+
+        <div class="event">
+            
+            <!-- Chargement de tous les events rescencés -->
+            <% event_imagess.forEach((event_image) => { %>
+                
+                <div class="event_frame">
+                    
+                    <img class="events_img" src="<%= event_image.url %> " alt="event_image" style="margin-top: <%= event_image.offset|0 %>px">
+
+                    <div class="events_desc">
+                        <p class="event_date" style="margin-top: <%= event_image.offset3|0 %>px;font-size:25px;font-style:italic"><%= event_image.date %></p>
+                        <h3 class="event_image_name" style="margin-top: <%= event_image.offset3|0 %>px;font-size:25px;font-style:bold"><%= event_image.name %></h3>
+                        <p class="event_image_respo" style="margin-top: <%= event_image.offset2|0 %>px" ><%= event_image.desc %></p>
+                    </div>
+            
+                </div>
+                
+                
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</div>
