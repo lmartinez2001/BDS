@@ -147,10 +147,10 @@ async function retrieveConnectionURL(res) {
       
       const client = new issuer.Client({
           client_id: 'sporticus',
-          client_secret: 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1',
-          //client_secret: '96519c5d-e497-4e75-9e0a-9b4f3d226c50',
-          redirect_uris: ['http://localhost:80/cb'], // TODO : à changer !!! 
-          //redirect_uris: ['https://sporticus.rezel.net:80/cb'], 
+          //client_secret: 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1',
+          client_secret: '96519c5d-e497-4e75-9e0a-9b4f3d226c50',
+          //redirect_uris: ['http://localhost:80/cb'], // TODO : à changer !!! 
+          redirect_uris: ['https://sporticus.rezel.net:80/cb'], 
           response_types: ['code'],
           // id_token_signed_response_alg (default "RS256")
           // token_endpoint_auth_method (default "client_secret_basic")
@@ -177,8 +177,8 @@ async function retrieveConnectionURL(res) {
         var userinfo = null;
 
         (async(params) => {
-          const tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
-          //const tokenSet = await client.callback('https://sporticus.rezel.net:80/cb', params, { code_verifier });
+          //const tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
+          const tokenSet = await client.callback('https://sporticus.rezel.net:80/cb', params, { code_verifier });
           var access_token  = tokenSet.access_token;
           var refresh_token = tokenSet.refresh_token;
           userinfo = await client.userinfo(access_token);
