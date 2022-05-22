@@ -144,14 +144,14 @@ app.get('/download', (req, res) => {
 async function retrieveConnectionURL(res) {
     //const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
     const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
-      console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
+      //console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
       
       const client = new issuer.Client({
           client_id: 'sporticus',
           //client_secret: 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1',
           client_secret: '96519c5d-e497-4e75-9e0a-9b4f3d226c50',
           //redirect_uris: ['http://localhost:80/cb'], // TODO : à changer !!! 
-          redirect_uris: ['https://sporticus.rezel.net:80/cb'], 
+          redirect_uris: ['https://sporticus.rezel.net/cb'], 
           response_types: ['code'],
           // id_token_signed_response_alg (default "RS256")
           // token_endpoint_auth_method (default "client_secret_basic")
