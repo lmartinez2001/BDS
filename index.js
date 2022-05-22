@@ -179,7 +179,7 @@ async function retrieveConnectionURL(res) {
 
         (async(params) => {
           //const tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
-          const tokenSet = await client.callback('https://sporticus.rezel.net:80/cb', params, { code_verifier });
+          const tokenSet = await client.callback('https://sporticus.rezel.net/cb', params, { code_verifier });
           var access_token  = tokenSet.access_token;
           var refresh_token = tokenSet.refresh_token;
           userinfo = await client.userinfo(access_token);
