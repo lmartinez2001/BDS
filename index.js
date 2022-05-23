@@ -152,8 +152,8 @@ app.get('/disconnect', (req, res) => {
 /* ==================================== CONNEXION A REZEL ===================================================*/
 
 async function retrieveConnectionURL(res) {
-    //const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
-    const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
+    const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
+    //const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
       //console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
       
       const client = new issuer.Client({
@@ -171,13 +171,13 @@ async function retrieveConnectionURL(res) {
       
       
       const code_verifier = generators.codeVerifier();
-      const code_challenge = generators.codeChallenge(code_verifier);
+      //const code_challenge = generators.codeChallenge(code_verifier);
       
       let url = client.authorizationUrl({
         scope: 'openid email profile',
         resource: 'https://my.api.example.com/resource/32178',
-        code_challenge,
-        code_challenge_method: 'S256',
+        /*code_challenge,
+        code_challenge_method: 'S256',*/
       });
       
       res.redirect(url.toString());
