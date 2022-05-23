@@ -149,7 +149,8 @@ app.get('/disconnect', (req, res) => {
 
 
 
-// Connexion a Rezel
+/* ==================================== CONNEXION A REZEL ===================================================*/
+
 async function retrieveConnectionURL(res) {
     //const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
     const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
