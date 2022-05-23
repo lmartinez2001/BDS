@@ -37,15 +37,12 @@ function checkCookieConnectedCookie() {
 function checkCertifActive() {
     var cookie = getCookie("SPORTICUS_CERTIF");
     var certifstatustext = document.getElementById('certif-status');
-    var certifdesc = document.getElementById('certif-description');
 
     if (cookie != null) {
         if(cookie === 'false') {
             certifstatustext.textContent = "Pas de certificat médical téléversé";
-            certifdesc.textContent = "Pour téléverser un certificat, choisissez un fichier puis cliquez sur Téléverser. Il doit être au format pdf."
         } else {
             certifstatustext.textContent = "Vous avez un certificat téléversé";
-            certifdesc.textContent = "Vous pouvez le télécharger ou le remplacer en choisissant un fichier puis en cliquant sur Téléverser. Il doit être au format pdf."
         }
         
     }
@@ -60,4 +57,6 @@ $(document).ready( function () {
     checkCookieConnectedCookie();
     checkCertifActive();
   });
+
+
 

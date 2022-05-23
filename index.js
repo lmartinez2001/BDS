@@ -184,6 +184,7 @@ async function retrieveConnectionURL(res) {
 
           try {
             tokenSet = await client.callback('https://sporticus.rezel.net/cb', params, { code_verifier });
+            //tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
             access_token  = tokenSet.access_token;
           } catch(err) {
             console.error(err);

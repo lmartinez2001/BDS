@@ -4,24 +4,39 @@
 
     <div class="profile-upload-wrapper">
         <h3>Certificat médical</h3>
-        <form method="post" action="/profile" enctype="multipart/form-data">
-            
-            <label class="custom-file-upload">
+        <form method="post" action="/profile" enctype="multipart/form-data" class="profile-form">
+            <!--
+                <label class="custom-file-upload">
                 <input type="file" id="file-input" name="file">
                 Choisir
             </label>
+            -->
+            
+            <label for="file-input" class="custom-file-upload">Choisir</label>
+            <input id="file-input" type="file"  name="file" style="visibility:hidden;">
             <input type="submit" value="Téléverser">
-            <!--<button id="upload-btn">Téléverser</button>-->
         </form>
+
+        <p id="selected-file"></p>
 
         <a href="/download" class="download-link">Télécharger le certificat</a>
         
         <h4 id="certif-status">a</h4>
 
-        <p id="certif-description" style="text-align: justify; margin: 10px;"></p>
-
     </div>
 
 
 </div>
+
+
+<script>
+    $("#file-input").change(function() {
+  filename = this.files[0].name;
+  console.log(filename);
+  var selectedFilename = document.getElementById("selected-file");
+  selectedFilename.textContent = "Fichier sélectionné : " + filename;
+});
+
+</script>
+
 

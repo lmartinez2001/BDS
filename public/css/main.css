@@ -163,9 +163,6 @@ input[type=submit]:hover {
     color: #fcd517;
 }
 
-input[type="file"] {
-    display: none;
-}
 
 .custom-file-upload {
     background-color: #5e941a;
@@ -181,5 +178,13 @@ input[type="file"] {
 
 .custom-file-upload:hover {
     color: #fcd517;
+}
+
+.profile-form {
+    max-width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 90px;
 }
 
