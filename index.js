@@ -190,7 +190,12 @@ async function retrieveConnectionURL(res) {
           }
           
           //var refresh_token = tokenSet.refresh_token;
-          userinfo = await client.userinfo(access_token);
+          try {
+            userinfo = await client.userinfo(access_token);
+          } catch(err) {
+              console.error(err)
+          }
+          
           //console.log('userinfo %j', userinfo);
             
           // Ajout de l'utilisateur dans le json
