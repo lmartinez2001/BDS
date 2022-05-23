@@ -144,6 +144,20 @@
     color: #fcd517;
     padding-top: 1.5rem;
     margin-left: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media(max-width: 600px) {
+    .nav-logo {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #fcd517;
+        padding-top: 1.5rem;
+        margin-left: 1rem;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 
 .nav-logo-img {
@@ -163,7 +177,7 @@
         flex-direction: column;
         background-color: rgba(94, 148, 26, 0.7);
         
-        width: 100%;
+        width: 90%;
         border-radius: 10px;
         text-align: center;
         transition: 0.3s;
