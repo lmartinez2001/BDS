@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const {Issuer,generators}=require("openid-client")
 const upload = require('express-fileupload')
 const fs = require('fs')
+const path = require('path')
 
 const event_images = require('./views/event_images')
 const sport_images = require('./views/sport_images')
@@ -22,8 +23,8 @@ app.use(expressLayouts)
 app.use(upload())
 
 // Fichiers statics
-app.use(express.static('public'))
-app.use(express.static('views'))
+app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '/views')))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/scripts', express.static(__dirname +'public/scripts'))
 app.use('/jsons', express.static(__dirname + 'public/jsons'))
