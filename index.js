@@ -23,6 +23,7 @@ app.use(upload())
 
 // Fichiers statics
 app.use(express.static('public'))
+app.use(express.static('views'))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/scripts', express.static(__dirname +'public/scripts'))
 app.use('/jsons', express.static(__dirname + 'public/jsons'))
@@ -58,6 +59,7 @@ app.get('/events', (req, res) => {
 
 // Route de connexion
 app.get('/connection', (req, res) => {
+
     retrieveConnectionURL(res);
 })
 
@@ -137,6 +139,12 @@ app.get('/download', (req, res) => {
     }
 })
 
+app.get('/disconnect', (req, res) => {
+    res.clearCookie("SPORTICUS_CERTIF");
+    res.clearCookie("SPORTICUS_CONNECTED");
+    res.redirect('/')
+})
+
 
 
 
@@ -197,7 +205,7 @@ async function retrieveConnectionURL(res) {
               console.error(err)
           }
           
-          //console.log('userinfo %j', userinfo);
+          console.log('userinfo %j', userinfo);
             
           // Ajout de l'utilisateur dans le json
           var usersjson = fs.readFileSync("./public/jsons/accounts.json","utf-8");
