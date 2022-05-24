@@ -24,7 +24,6 @@ app.use(upload())
 
 // Fichiers statics
 app.use(express.static(path.join(__dirname, '/public')))
-app.use(express.static(path.join(__dirname, '/views')))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/scripts', express.static(__dirname +'public/scripts'))
 app.use('/jsons', express.static(__dirname + 'public/jsons'))
@@ -152,16 +151,36 @@ app.get('/disconnect', (req, res) => {
 /* ==================================== CONNEXION A REZEL ===================================================*/
 
 async function retrieveConnectionURL(res) {
-    //const issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
-    const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
+
+    var issuer = null;
+
+    if(process.env.NODE_ENV === "development") {
+        issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
+    } else if(process.env.NODE_ENV === "production") {
+        const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
+    }
+    
+    var client_scr = null
+    var redirect = null
+
+    if(process.env.NODE_ENV === 'development') {
+        client_scr = 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1'
+        redirect = 'http://localhost:80/cb'
+    } else if (process.env.NODE_ENV === 'production') {
+        client_scr = '96519c5d-e497-4e75-9e0a-9b4f3d226c50'
+        redirect = 'https://sporticus.rezel.net/cb'
+    }
+    
       //console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
       
       const client = new issuer.Client({
           client_id: 'sporticus',
+
+          
           //client_secret: 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1',
-          client_secret: '96519c5d-e497-4e75-9e0a-9b4f3d226c50',
+          client_secret: client_scr,
           //redirect_uris: ['http://localhost:80/cb'], // TODO : à changer !!! 
-          redirect_uris: ['https://sporticus.rezel.net/cb'], 
+          redirect_uris: [redirect], 
           response_types: ['code'],
           // id_token_signed_response_alg (default "RS256")
           // token_endpoint_auth_method (default "client_secret_basic")
@@ -193,7 +212,13 @@ async function retrieveConnectionURL(res) {
           var access_token = null;
 
           try {
-            tokenSet = await client.callback('https://sporticus.rezel.net/cb', params, { code_verifier });
+              if(process.env.NODE_ENV === 'development') {
+                tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
+                
+              } else if(process.env.NODE_ENV === 'production') {
+                tokenSet = await client.callback('https://sporticus.rezel.net/cb', params, { code_verifier });
+              }
+            
             //tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
             access_token  = tokenSet.access_token;
           } catch(err) {
