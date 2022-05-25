@@ -1,91 +1,12 @@
-
-/*
-.nav_logo {
-    max-width: 90px;
-    max-height: 90px;
-    margin-left: 90px;
+:root {
+    --dark-green: #5e941a;
+    --light-green: #8fbb4b;
+    --yellow: #fcd517;
+    --beige: #fef8e3;
 }
-
-
-
-.nav {
-    position: sticky;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    height: 75px;
-    top: 0;
-    margin: 0;
-    background-color: #5e941a;
-
-}
-
-.nav_list {
-    margin-right: 80px;
-    
-}
-
-.nav_item {
-    display: inline-block;
-    margin: 0px 30px;
-   
-}
-
-
-.nav_title {
-    display: flex;
-    flex-direction: row;
-}
-
-.nav_name {
-    color: cornsilk;
-    padding: 10px;
-}
-
-.nav_link {
-   
-    text-decoration: none;
-    color: cornsilk;
-    size: 15px;
-    transition: 0.2s;
-    font-size: 20px;
-}
-
-.nav_link:hover {
-    color: aqua;
-}
-*/
-/*
-
-.hamburger {
-    display: none !important;
-}
-
-
-@media(max-width: 1000px) {
-
-    .hamburger {
-        display: block !important;
-    }
-
-    .nav_menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        left: 0;
-        text-align: center;
-        padding: 16px 0;
-    }
-}
-
-*/
-
-
 
 .nav_container{
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--beige);
     position: sticky;
     top:0;
     margin:0;
@@ -97,7 +18,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    background-color: #5e941a;
+    background-color: var(--dark-green);
 
     
     
@@ -114,7 +35,7 @@
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: #fcd517;
+    background-color: var(--yellow);
 }
 
 .nav-menu {
@@ -130,18 +51,18 @@
 .nav-link{
     font-size: 1.6rem;
     font-weight: 400;
-    color: cornsilk;
+    color: var(--beige);
     transition: 0.2s;
 }
 
 .nav-link:hover{
-    color: #fcd517;
+    color: var(--yellow);
 }
 
 .nav-logo {
     font-size: 2.1rem;
     font-weight: 500;
-    color: #fcd517;
+    color: var(--yellow);
     padding-top: 1.5rem;
     margin-left: 1rem;
     overflow: hidden;
@@ -152,7 +73,7 @@
     .nav-logo {
         font-size: 1.6rem;
         font-weight: 500;
-        color: #fcd517;
+        color: var(--yellow);
         padding-top: 1.5rem;
         margin-left: 1rem;
         overflow: hidden;

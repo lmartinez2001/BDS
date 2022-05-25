@@ -13,7 +13,7 @@
             -->
             
             <label for="file-input" class="custom-file-upload">Choisir</label>
-            <input id="file-input" type="file"  name="file" style="visibility:hidden;">
+            <input id="file-input" type="file" accept=".pdf" name="file" style="visibility:hidden;">
             <input type="submit" value="Envoyer">
         </form>
 
@@ -22,6 +22,8 @@
         <a href="/download" class="download-link">Télécharger le certificat</a>
         
         <h4 id="certif-status"></h4>
+
+        <p><%= pdfState %> </p>
 
     </div>
 

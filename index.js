@@ -18,7 +18,7 @@ const images = require('./views/images')
 
 
 // Middlewares
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(expressLayouts)
 app.use(upload())
 
@@ -36,7 +36,12 @@ app.set('layout', './layouts/main-layout')
 
 // Page principale
 app.get('/', (req, res) => {
-    res.render('home', { title:'Homo Sporticus', imagess:images})
+    res.render('home', { title:'Homo Sporticus', images:images})
+})
+
+
+app.get('/returns', (req, res) => {
+    res.render('returns', {title : 'Comptes'})
 })
 
 // Liste des sports proposés
@@ -60,16 +65,25 @@ app.get('/events', (req, res) => {
 // Route de connexion
 app.get('/connection', (req, res) => {
 
-    retrieveConnectionURL(res);
+    retrieveConnectionURL(res)
 })
 
 
+var pdfValid=true
+var pdfState=''
+
 // Page d'accès au profile utilisateur
 app.get('/profile', (req, res) => {
-    if(typeof req.cookies.SPORTICUS_CONNECTED === 'undefined'){
+
+    if(typeof req.cookies.SPORTICUS_CONNECTED === 'undefined') {
         res.redirect('/')
     } else {
-        res.render('profile', {title: 'Profile'})
+        if(!pdfValid) {
+            pdfValid=true
+            pdfState='Fichier invalide'
+        } else {pdfState=''}
+        res.render('profile', {title: 'Profile', pdfState:pdfState})
+        
     }
     
 
@@ -77,9 +91,18 @@ app.get('/profile', (req, res) => {
 
 // Upload du certificat
 app.post('/profile' ,(req, res) => {
+
     if(req.files) {
         var file = req.files.file
         var filename = file.name.split(".")
+
+        if(filename[1] != 'pdf') {
+            pdfValid=false
+            res.redirect('/profile')
+            return
+        }
+        
+
         var username = req.cookies.SPORTICUS_CONNECTED;
 
         // Modification du fichier JSON
@@ -91,6 +114,7 @@ app.post('/profile' ,(req, res) => {
                 user.certif = true;
             }
         });
+
         usersjson = JSON.stringify(users)
         fs.writeFileSync("./public/jsons/accounts.json",usersjson,"utf-8") 
 
@@ -157,16 +181,19 @@ async function retrieveConnectionURL(res) {
     if(process.env.NODE_ENV === "development") {
         issuer = await Issuer.discover('https://keycloak.local.rezel.net/auth/realms/servers/');
     } else if(process.env.NODE_ENV === "production") {
-        const issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
+        issuer = await Issuer.discover('https://garezeldap.rezel.net/keycloak/auth/realms/master/');
     }
     
     var client_scr = null
     var redirect = null
 
     if(process.env.NODE_ENV === 'development') {
+
         client_scr = 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1'
         redirect = 'http://localhost:80/cb'
+
     } else if (process.env.NODE_ENV === 'production') {
+
         client_scr = '96519c5d-e497-4e75-9e0a-9b4f3d226c50'
         redirect = 'https://sporticus.rezel.net/cb'
     }
@@ -174,17 +201,12 @@ async function retrieveConnectionURL(res) {
       //console.log('Discovered issuer %s %O', issuer.issuer, issuer.metadata);
       
       const client = new issuer.Client({
-          client_id: 'sporticus',
 
-          
-          //client_secret: 'VT5UPMZpjQ2FL7BLNa2e3QF7Xh3SnsX1',
+          client_id: 'sporticus',
           client_secret: client_scr,
-          //redirect_uris: ['http://localhost:80/cb'], // TODO : à changer !!! 
           redirect_uris: [redirect], 
           response_types: ['code'],
-          // id_token_signed_response_alg (default "RS256")
-          // token_endpoint_auth_method (default "client_secret_basic")
-        }); // => Client
+        });
       
       //console.log(client);
       
@@ -214,7 +236,7 @@ async function retrieveConnectionURL(res) {
           try {
               if(process.env.NODE_ENV === 'development') {
                 tokenSet = await client.callback('http://localhost:80/cb', params, { code_verifier });
-                
+
               } else if(process.env.NODE_ENV === 'production') {
                 tokenSet = await client.callback('https://sporticus.rezel.net/cb', params, { code_verifier });
               }
