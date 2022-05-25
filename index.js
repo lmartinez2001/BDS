@@ -44,6 +44,9 @@ app.get('/', (req, res) => {
     
 })
 
+if(process.env.NODE_ENV != 'production') {
+
+
 
 app.get('/returns', (req, res) => {
     res.render('returns', {title : 'Comptes'})
@@ -173,6 +176,8 @@ app.get('/disconnect', (req, res) => {
     res.clearCookie("SPORTICUS_CONNECTED");
     res.redirect('/')
 })
+
+}
 
 
 
