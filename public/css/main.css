@@ -198,6 +198,12 @@ input[type=submit]:hover {
     margin-right: 85px;
 }
 
+.returns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 
 .returns-item {
     display: flex;
@@ -212,3 +218,12 @@ input[type=submit]:hover {
     margin-bottom: 50px;
 }
 
+
+@media(max-width: 900px) {
+    .returns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
