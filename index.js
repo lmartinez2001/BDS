@@ -36,15 +36,10 @@ app.set('layout', './layouts/main-layout')
 
 // Page principale
 app.get('/', (req, res) => {
-    if(process.env.NODE_ENV === 'dev') {
-        res.render('home', { title:'Homo Sporticus', images:images})
-    } else {
-        res.send(':(')
-    }
-    
+    res.render('home', { title:'Homo Sporticus', images:images})
 })
 
-if(process.env.NODE_ENV != 'production') {
+
 
 
 
@@ -177,7 +172,6 @@ app.get('/disconnect', (req, res) => {
     res.redirect('/')
 })
 
-}
 
 
 
